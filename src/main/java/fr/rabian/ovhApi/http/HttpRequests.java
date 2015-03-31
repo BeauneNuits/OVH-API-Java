@@ -1,4 +1,4 @@
-package fr.rabian.http;
+package fr.rabian.ovhApi.http;
 
 /**
  * Created by adrien on 27/03/15.
@@ -8,8 +8,6 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
 
 public abstract class HttpRequests {
 

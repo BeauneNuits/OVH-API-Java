@@ -1,6 +1,6 @@
-package fr.rabian.utils;
+package fr.rabian.ovhApi.utils;
 
-import fr.rabian.http.HttpRequests;
+import fr.rabian.ovhApi.http.HttpRequests;
 
 public abstract class Timestamps {
     public static final int SYSTEM = 1;

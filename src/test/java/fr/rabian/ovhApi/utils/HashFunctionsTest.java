@@ -1,4 +1,4 @@
-package fr.rabian.utils;
+package fr.rabian.ovhApi.utils;
 
 import static org.junit.Assert.*;
 
