@@ -2,19 +2,28 @@ package fr.rabian.utils;
 
 import fr.rabian.http.HttpRequests;
 
-/**
- * Created by adrien on 30/03/15.
- */
 public abstract class Timestamps {
     public static final int SYSTEM = 1;
     public static final int OVH = 2;
     public static final int AUTO = 3;
-
+    /**
+     * Result of SystemTime - OVHTime
+     */
     private static int delta = 0;
     private static long lastFetch = -1;
 
     private static long getSystemTime() {
         return (System.currentTimeMillis() / 1000L);
+    }
+
+    private static long getCorrectedTime() {
+        return getSystemTime() - delta;
+    }
+
+    private static void correctTime() throws Exception {
+        long time = getOVHTime();
+        lastFetch = getSystemTime();
+        delta = (int) (getSystemTime() - time);
     }
 
     private static long getOVHTime() throws Exception {
@@ -28,12 +37,18 @@ public abstract class Timestamps {
     }
 
     public static long getTime(int source) throws Exception {
-        long time = -1;
+        long time;
 
-        if (lastFetch == -1 || getSystemTime() - lastFetch > 3600) {
+        if (source == AUTO || source == SYSTEM) {
+            if (lastFetch == -1 || getSystemTime() - lastFetch > 3600) {
+                correctTime();
+            }
+            time = getCorrectedTime();
+        } else if (source == OVH) {
             time = getOVHTime();
-            lastFetch = getSystemTime();
-            delta = (int)(getSystemTime() - time);
+        } else {
+            throw new IllegalArgumentException("Accepted values are : AUTO, SYSTEM, OVH.");
         }
+        return time;
     }
 }
