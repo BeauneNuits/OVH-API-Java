@@ -7,7 +7,7 @@ package fr.rabian.ovhApi.http;
 public class TestHTTP {
     public static void main(String[] args) throws Exception {
         StringBuffer out = new StringBuffer();
-        HttpRequests.sendGet("https://eu.api.ovh.com/1.0/auth/time", out);
+        HttpRequests.sendGet("https://eu.api.ovh.com/1.0/auth/time", out, null);
         System.out.println("OVH : " + out.toString());
         System.out.println("System : " + (int) (System.currentTimeMillis() / 1000L));
     }
