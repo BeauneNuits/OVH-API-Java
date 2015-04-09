@@ -23,7 +23,7 @@ public class Application {
         this.secKey = secKey;
     }
 
-    public Customer getCustomer(List<ScopeElement> scope, String redirectURL) {
+    public Consumer getConsumer(List<ScopeElement> scope, String redirectURL) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         List<RequestProperty> headers = new ArrayList<>();
@@ -39,9 +39,9 @@ public class Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Customer c = null;
+        Consumer c = null;
         if (result == 200) {
-            c = gson.fromJson(out.toString(), Customer.class);
+            c = gson.fromJson(out.toString(), Consumer.class);
             c.setScope(scope);
         }
         return c;

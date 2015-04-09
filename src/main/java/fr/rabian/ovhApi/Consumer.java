@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Adrien on 31/03/2015.
  */
-public class Customer {
+public class Consumer {
 
     private final String consumerKey;
     private List<ScopeElement> scope;
@@ -14,18 +14,18 @@ public class Customer {
 
 
 
-    protected Customer(String consumerKey, List<ScopeElement> scope, String validationUrl, String state) {
+    protected Consumer(String consumerKey, List<ScopeElement> scope, String validationUrl, String state) {
         this.consumerKey = consumerKey;
         this.scope = scope;
         this.validationUrl = validationUrl;
         this.state = state;
     }
 
-    protected Customer(String consumerKey) {
+    protected Consumer(String consumerKey) {
         this(consumerKey, null, null, null);
     }
 
-    protected Customer() {
+    protected Consumer() {
         this(null, null, null, null);
     }
 
