@@ -1,21 +1,30 @@
 package fr.rabian.ovhApi;
 
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by Adrien on 04/04/2015.
  */
 public class ScopeElement implements Cloneable {
 
-    public static final int GET = 1;
-    public static final int POST = 2;
-    public static final int PUT = 3;
-    public static final int DELETE = 4;
+    public static final Set<String> methods;
 
-    private int method;
+    static {
+        methods = new HashSet<>();
+        methods.add("GET");
+        methods.add("PUT");
+        methods.add("POST");
+        methods.add("DELETE");
+    }
+
+    private String method;
     private String path;
 
-    public ScopeElement(int method, String path) throws IllegalArgumentException {
-        setMethod(method);
-        setPath(path);
+    public ScopeElement(String method, String path) throws IllegalArgumentException {
+        this.setMethod(method);
+        this.setPath(path);
     }
 
     public ScopeElement(ScopeElement s) {
@@ -42,7 +51,7 @@ public class ScopeElement implements Cloneable {
             throw new IllegalArgumentException("Error : path cannot be empty/null.");
         }
         char firstChar = path.charAt(0);
-        char lastChar = path.charAt(path.length());
+        char lastChar = path.charAt(path.length() - 1);
         int occurDoubleSlash = path.indexOf("//");
         boolean lastCharOK = lastChar == '*' || Character.isAlphabetic(lastChar);
         boolean check = firstChar == '/' && occurDoubleSlash == -1 && lastCharOK;
@@ -53,15 +62,15 @@ public class ScopeElement implements Cloneable {
         }
     }
 
-    public int getMethod() {
+    public String getMethod() {
         return method;
     }
 
-    public void setMethod(int method) throws IllegalArgumentException {
-        if (method <= 4 && method >= 1) {
+    public void setMethod(String method) throws IllegalArgumentException {
+        if (methods.contains(method)) {
             this.method = method;
         } else {
-            throw new IllegalArgumentException("Error : method should be >0 and <5. Please refer to class constants.");
+            throw new IllegalArgumentException("Error : please refer to HTTP methods.");
         }
     }
 }
