@@ -28,7 +28,7 @@ public abstract class Timestamps {
 
     private static long getOVHTime() throws Exception {
         StringBuffer out = new StringBuffer();
-        HttpRequests.sendGet("https://eu.api.ovh.com/1.0/auth/time", out, null);
+        HttpRequests.sendGet("https://eu.api.ovh.com/1.0/auth/time", out);
         return Long.parseLong(out.toString());
     }
 
