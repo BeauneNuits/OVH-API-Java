@@ -14,12 +14,17 @@ import java.util.List;
 
 public abstract class HttpRequests {
 
-    public static int sendGet(String url, StringBuffer out) throws Exception {
+    public static int sendGet(String url, StringBuffer out, List<RequestProperty> headers) throws Exception {
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
         con.setRequestMethod("GET");
+        if (headers != null) {
+            for (RequestProperty header : headers) {
+                con.setRequestProperty(header.getKey(), header.getValue());
+            }
+        }
 
         int responseCode = con.getResponseCode();
 
