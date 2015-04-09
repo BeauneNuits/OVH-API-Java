@@ -3,11 +3,14 @@ package fr.rabian.ovhApi.http;
 /**
  * Created by adrien on 27/03/15.
  */
+import fr.rabian.ovhApi.requestBeans.RequestProperty;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 public abstract class HttpRequests {
 
@@ -32,16 +35,21 @@ public abstract class HttpRequests {
         return responseCode;
     }
 
-    public static int sendPost(String url, StringBuffer out, String urlParameters) throws Exception {
+    public static int sendPost(String url, StringBuffer out, String body, List<RequestProperty> headers) throws Exception {
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
         con.setRequestMethod("POST");
+        if (headers != null) {
+            for (RequestProperty header : headers) {
+                con.setRequestProperty(header.getKey(), header.getValue());
+            }
+        }
 
         con.setDoOutput(true);
         DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-        wr.writeBytes(urlParameters);
+        wr.writeBytes(body);
         wr.flush();
         wr.close();
 
