@@ -14,6 +14,10 @@ import java.util.List;
 
 public abstract class HttpRequests {
 
+    public static int sendGet(String url, StringBuffer out) throws Exception {
+        return sendGet(url, out, null);
+    }
+
     public static int sendGet(String url, StringBuffer out, List<RequestProperty> headers) throws Exception {
 
         URL obj = new URL(url);
@@ -38,6 +42,10 @@ public abstract class HttpRequests {
         in.close();
 
         return responseCode;
+    }
+
+    public static int sendPost(String url, StringBuffer out, String body) throws Exception {
+        return sendPost(url, out, body, null);
     }
 
     public static int sendPost(String url, StringBuffer out, String body, List<RequestProperty> headers) throws Exception {
