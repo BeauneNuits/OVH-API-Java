@@ -4,10 +4,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by Adrien on 04/04/2015.
+ * Represents an element of a client's API scope.
+ *
+ * @author Adrien Rabian
  */
 public class ScopeElement implements Cloneable {
 
+    /**
+     * Set of admitted HTTP methods
+     */
     public static final Set<String> methods;
 
     static {
@@ -18,18 +23,42 @@ public class ScopeElement implements Cloneable {
         methods.add("DELETE");
     }
 
+    /**
+     * Authorized HTTP method
+     */
     private String method;
+
+    /**
+     * Authorized path, starting with /
+     */
     private String path;
 
+    /**
+     * Creates a scope element.
+     *
+     * @param method Authorized HTTP method
+     * @param path Authorized path
+     * @throws IllegalArgumentException If the method/path isn't correct.
+     */
     public ScopeElement(String method, String path) throws IllegalArgumentException {
         this.setMethod(method);
         this.setPath(path);
     }
 
+    /**
+     * Clones a scope element.
+     *
+     * @param s Element to clone
+     */
     public ScopeElement(ScopeElement s) {
         this(s.getMethod(), s.getPath());
     }
 
+    /**
+     * Clones the current element.
+     *
+     * @return The clone.
+     */
     @Override
     public Object clone() {
         ScopeElement clone = null;
@@ -41,6 +70,11 @@ public class ScopeElement implements Cloneable {
         return clone;
     }
 
+    /**
+     * Returns the path.
+     *
+     * @return Authorized path
+     */
     public String getPath() {
         return path;
     }
@@ -61,6 +95,11 @@ public class ScopeElement implements Cloneable {
         }
     }
 
+    /**
+     * Returns the HTTP method.
+     *
+     * @return Authorized HTTP method
+     */
     public String getMethod() {
         return method;
     }
