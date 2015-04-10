@@ -1,6 +1,5 @@
-package fr.rabian.ovhApi;
+package fr.rabian.ovhApi.beans;
 
-import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;
 

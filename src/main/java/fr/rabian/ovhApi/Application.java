@@ -2,6 +2,8 @@ package fr.rabian.ovhApi;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import fr.rabian.ovhApi.beans.Consumer;
+import fr.rabian.ovhApi.beans.ScopeElement;
 import fr.rabian.ovhApi.http.HttpRequests;
 import fr.rabian.ovhApi.beans.RequestCredentials;
 import fr.rabian.ovhApi.http.Header;

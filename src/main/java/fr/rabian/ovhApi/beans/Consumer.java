@@ -1,4 +1,4 @@
-package fr.rabian.ovhApi;
+package fr.rabian.ovhApi.beans;
 
 import java.util.List;
 

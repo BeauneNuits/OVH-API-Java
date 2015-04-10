@@ -1,7 +1,5 @@
 package fr.rabian.ovhApi.beans;
 
-import fr.rabian.ovhApi.ScopeElement;
-
 import java.util.List;
 
 /**
