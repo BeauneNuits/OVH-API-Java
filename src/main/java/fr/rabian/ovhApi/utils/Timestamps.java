@@ -1,42 +1,48 @@
 package fr.rabian.ovhApi.utils;
 
+import fr.rabian.ovhApi.beans.Endpoint;
 import fr.rabian.ovhApi.http.HttpRequests;
 
-public abstract class Timestamps {
+public class Timestamps {
     public static final int SYSTEM = 1;
     public static final int OVH = 2;
     public static final int AUTO = 3;
     /**
      * Result of SystemTime - OVHTime
      */
-    private static int delta = 0;
-    private static long lastFetch = -1;
+    private int delta = 0;
+    private long lastFetch = -1;
+    private String url;
+
+    public Timestamps (Endpoint e) {
+        this.url = e.getURL() + "/auth/time";
+    }
 
     private static long getSystemTime() {
         return (System.currentTimeMillis() / 1000L);
     }
 
-    private static long getCorrectedTime() {
+    private long getCorrectedTime() {
         return getSystemTime() - delta;
     }
 
-    private static void correctTime() throws Exception {
+    private void correctTime() throws Exception {
         long time = getOVHTime();
         lastFetch = getSystemTime();
         delta = (int) (getSystemTime() - time);
     }
 
-    private static long getOVHTime() throws Exception {
+    private long getOVHTime() throws Exception {
         StringBuffer out = new StringBuffer();
-        HttpRequests.sendGet("https://eu.api.ovh.com/1.0/auth/time", out);
+        HttpRequests.sendGet(this.url, out);
         return Long.parseLong(out.toString());
     }
 
-    public static long getTime() throws Exception {
+    public long getTime() throws Exception {
         return getTime(AUTO);
     }
 
-    public static long getTime(int source) throws Exception {
+    public long getTime(int source) throws Exception {
         long time;
 
         if (source == AUTO || source == SYSTEM) {
