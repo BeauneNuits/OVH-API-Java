@@ -7,6 +7,7 @@ import java.util.Set;
  * Represents an element of a client's API scope.
  *
  * @author Adrien Rabian
+ * @version 0.1
  */
 public class ScopeElement implements Cloneable {
 

@@ -4,6 +4,7 @@ package fr.rabian.ovhApi.beans;
  * Represents an OVH application.
  *
  * @author Adrien Rabian
+ * @version 0.1
  */
 public class Application {
     /**
