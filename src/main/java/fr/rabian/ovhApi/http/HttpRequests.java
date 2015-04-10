@@ -3,7 +3,6 @@ package fr.rabian.ovhApi.http;
 /**
  * Created by adrien on 27/03/15.
  */
-import fr.rabian.ovhApi.requestBeans.RequestProperty;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -18,14 +17,14 @@ public abstract class HttpRequests {
         return sendGet(url, out, null);
     }
 
-    public static int sendGet(String url, StringBuffer out, List<RequestProperty> headers) throws Exception {
+    public static int sendGet(String url, StringBuffer out, List<Header> headers) throws Exception {
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
         con.setRequestMethod("GET");
         if (headers != null) {
-            for (RequestProperty header : headers) {
+            for (Header header : headers) {
                 con.setRequestProperty(header.getKey(), header.getValue());
             }
         }
@@ -48,14 +47,14 @@ public abstract class HttpRequests {
         return sendPost(url, out, body, null);
     }
 
-    public static int sendPost(String url, StringBuffer out, String body, List<RequestProperty> headers) throws Exception {
+    public static int sendPost(String url, StringBuffer out, String body, List<Header> headers) throws Exception {
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
         con.setRequestMethod("POST");
         if (headers != null) {
-            for (RequestProperty header : headers) {
+            for (Header header : headers) {
                 con.setRequestProperty(header.getKey(), header.getValue());
             }
         }

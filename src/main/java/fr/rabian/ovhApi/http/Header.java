@@ -1,13 +1,13 @@
-package fr.rabian.ovhApi.requestBeans;
+package fr.rabian.ovhApi.http;
 
 /**
  * Created by Adrien on 09/04/2015.
  */
-public class RequestProperty {
+public class Header {
     String key;
     String value;
 
-    public RequestProperty(String key, String value) {
+    public Header(String key, String value) {
         this.key = key;
         this.value = value;
     }
