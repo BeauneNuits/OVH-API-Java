@@ -14,18 +14,18 @@ public class Consumer {
 
 
 
-    protected Consumer(String consumerKey, List<ScopeElement> scope, String validationUrl, String state) {
+    public Consumer(String consumerKey, List<ScopeElement> scope, String validationUrl, String state) {
         this.consumerKey = consumerKey;
         this.scope = scope;
         this.validationUrl = validationUrl;
         this.state = state;
     }
 
-    protected Consumer(String consumerKey) {
+    public Consumer(String consumerKey) {
         this(consumerKey, null, null, null);
     }
 
-    protected Consumer() {
+    public Consumer() {
         this(null, null, null, null);
     }
 
@@ -45,7 +45,7 @@ public class Consumer {
         return state;
     }
 
-    protected void setScope(List<ScopeElement> scope) {
+    public void setScope(List<ScopeElement> scope) {
         this.scope = scope;
     }
 }
