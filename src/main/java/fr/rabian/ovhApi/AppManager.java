@@ -8,7 +8,6 @@ import fr.rabian.ovhApi.http.HttpRequests;
 import fr.rabian.ovhApi.utils.HashFunctions;
 import fr.rabian.ovhApi.utils.Timestamps;
 
-import javax.xml.ws.http.HTTPException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,10 +50,16 @@ public class AppManager {
         return c;
     }
 
-    public String sendReq(String path, String method, Consumer c, String body, List<Header> headers) throws Exception{
-        if (headers == null) {
-            headers = new ArrayList<>();
-        }
+    public String sendGetReq(String path, Consumer c) throws Exception {
+        return sendReq(path, "GET", c, null);
+    }
+
+    public String sendPostReq(String path, Consumer c, String body) throws Exception {
+        return sendReq(path, "POST", c, body);
+    }
+
+    private String sendReq(String path, String method, Consumer c, String body) throws Exception{
+        List<Header> headers = new ArrayList<>();
         path = ep.getURL() + path;
         long time = ts.getTime();
         StringBuilder forSig = new StringBuilder();
