@@ -1,4 +1,4 @@
-package fr.rabian.ovhApi;
+package fr.rabian.ovhApi.beans;
 
 /**
  * Created by Adrien on 31/03/2015.
