@@ -8,6 +8,7 @@ import fr.rabian.ovhApi.http.HttpRequests;
 import fr.rabian.ovhApi.utils.HashFunctions;
 import fr.rabian.ovhApi.utils.Timestamps;
 
+import javax.xml.ws.http.HTTPException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,11 +51,11 @@ public class AppManager {
         return c;
     }
 
-    public int sendReq(String URL, String method, Consumer c, String body, StringBuffer out, List<Header> headers) throws Exception{
+    public String sendReq(String path, String method, Consumer c, String body, List<Header> headers) throws Exception{
         if (headers == null) {
             headers = new ArrayList<>();
         }
-        URL = ep.getURL() + URL;
+        path = ep.getURL() + path;
         long time = ts.getTime();
         StringBuilder forSig = new StringBuilder();
         forSig.append(app.getPubKey());
@@ -63,7 +64,7 @@ public class AppManager {
         forSig.append("+");
         forSig.append(method);
         forSig.append("+");
-        forSig.append(URL);
+        forSig.append(path);
         forSig.append("+");
         forSig.append(body);
         forSig.append("+");
@@ -76,13 +77,20 @@ public class AppManager {
         headers.add(new Header("X-Ovh-Timestamp", Long.toString(time)));
         headers.add(new Header("X-Ovh-Signature", sig));
 
+        int result = 0;
+        StringBuffer out = new StringBuffer();
+
         switch(method) {
             case "GET":
-                return HttpRequests.sendGet(URL, out, headers);
+                result = HttpRequests.sendGet(path, out, headers);
+                break;
             case "POST":
-                return HttpRequests.sendPost(URL, out, body, headers);
+                result = HttpRequests.sendPost(path, out, body, headers);
+                break;
             default:
                 throw new IllegalArgumentException("Incorrect HTTP method.");
         }
+
+        return out.toString();
     }
 }
