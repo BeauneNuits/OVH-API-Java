@@ -3,7 +3,7 @@ package fr.rabian.ovhApi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import fr.rabian.ovhApi.http.HttpRequests;
-import fr.rabian.ovhApi.requestBeans.RequestCredentials;
+import fr.rabian.ovhApi.beans.RequestCredentials;
 import fr.rabian.ovhApi.http.Header;
 import fr.rabian.ovhApi.utils.HashFunctions;
 import fr.rabian.ovhApi.utils.Timestamps;

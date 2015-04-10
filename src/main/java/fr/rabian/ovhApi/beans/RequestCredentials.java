@@ -1,4 +1,4 @@
-package fr.rabian.ovhApi.requestBeans;
+package fr.rabian.ovhApi.beans;
 
 import fr.rabian.ovhApi.ScopeElement;
 
