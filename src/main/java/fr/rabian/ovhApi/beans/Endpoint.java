@@ -1,7 +1,13 @@
 package fr.rabian.ovhApi.beans;
 
 /**
- * Created by Adrien on 10/04/2015.
+ * This class represents an endpoint for the OVH API.
+ * The OVH API system is used (of course) in OVH Europe, but also in OVH Canada, So You Start (EU and CA), Kimsufi (EU and CA), and Runabove.
+ * Depending on which system you plan to use the wrapper, you should pick your endpoint accordingly.
+ * The current (10/04/2015) known endpoints are already defined as class constants, but you can also create your own to suit your needs.
+ *
+ * @author Adrien Rabian
+ * @version 0.1
  */
 public class Endpoint {
 

@@ -1,9 +1,5 @@
 package fr.rabian.ovhApi.http;
 
-/**
- * Created by adrien on 27/03/15.
- */
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
@@ -11,12 +7,36 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
+/**
+ * This class handles HTTP requests.
+ *
+ * @author Adrien Rabian
+ * @version 0.1
+ */
+
 public abstract class HttpRequests {
 
+    /**
+     * GET request.
+     *
+     * @param url URL
+     * @param out StringBuffer to store response in
+     * @return Response code
+     * @throws Exception Exception Occuring during the request
+     */
     public static int sendGet(String url, StringBuffer out) throws Exception {
         return sendGet(url, out, null);
     }
 
+    /**
+     * GET request.
+     *
+     * @param url URL
+     * @param out StringBuffer to store response in
+     * @param headers HTTP headers
+     * @return Response code
+     * @throws Exception Occuring during the request
+     */
     public static int sendGet(String url, StringBuffer out, List<Header> headers) throws Exception {
 
         URL obj = new URL(url);
@@ -43,10 +63,28 @@ public abstract class HttpRequests {
         return responseCode;
     }
 
+    /**
+     * POST request.
+     * @param url URL
+     * @param out StringBuffer to store response in
+     * @param body Request body
+     * @return Response code
+     * @throws Exception Occuring during the request
+     */
     public static int sendPost(String url, StringBuffer out, String body) throws Exception {
         return sendPost(url, out, body, null);
     }
 
+    /**
+     * POST request.
+     *
+     * @param url URL
+     * @param out StringBuffer to store response in
+     * @param body Request body
+     * @param headers HTTP headers
+     * @return Response code
+     * @throws Exception Occuring during the request
+     */
     public static int sendPost(String url, StringBuffer out, String body, List<Header> headers) throws Exception {
 
         URL obj = new URL(url);

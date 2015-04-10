@@ -12,20 +12,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Adrien on 10/04/2015.
+ * Class designed to handle the basic operations of an application.
+ *
+ * @author Adrien Rabian
+ * @version 0.1
  */
 public class AppManager {
 
+    /**
+     * Application to manage
+     */
     private Application app;
+
+    /**
+     * Timestamps instance to use
+     */
     private Timestamps ts;
+
+    /**
+     * Endpoint to use
+     */
     private Endpoint ep;
 
+    /**
+     * Creates an instance of AppManager
+     *
+     * @param app Application to manage
+     * @param ep Endpoint to use
+     */
     public AppManager(Application app, Endpoint ep) {
         this.app = app;
         this.ep = ep;
         ts = new Timestamps(ep);
     }
 
+    /**
+     * Gets a new customer token
+     *
+     * @param scope Authorization scope
+     * @param redirectURL URL to redirect to after authentication
+     * @return Feteched Consumer
+     */
     public Consumer getConsumer(List<ScopeElement> scope, String redirectURL) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
@@ -50,14 +77,41 @@ public class AppManager {
         return c;
     }
 
+    /**
+     * Carries out a GET request.
+     *
+     * @param path Path to the function
+     * @param c Consumer concerned
+     * @return Response body
+     * @throws Exception Occuring during the request
+     */
     public String sendGetReq(String path, Consumer c) throws Exception {
         return sendReq(path, "GET", c, null);
     }
 
+    /**
+     * Carries out a POST request.
+     *
+     * @param path Path to the function
+     * @param c Consumer concerned
+     * @param body Request body
+     * @return Response body
+     * @throws Exception Occuring during the request
+     */
     public String sendPostReq(String path, Consumer c, String body) throws Exception {
         return sendReq(path, "POST", c, body);
     }
 
+    /**
+     * Carries out a request.
+     *
+     * @param path Path to the function
+     * @param method HTTP method
+     * @param c Consumer concerned
+     * @param body Request body
+     * @return Response body
+     * @throws Exception Occuring during the request
+     */
     private String sendReq(String path, String method, Consumer c, String body) throws Exception{
         List<Header> headers = new ArrayList<>();
         path = ep.getURL() + path;
