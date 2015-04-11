@@ -5,11 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.rabian.ovhApi</groupId>
-    <artifactId>javaWrapper</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>OVH-API-Java</artifactId>
+    <version>0.1</version>
+    <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version>1.8</jdk.version>
+        <junit.version>4.10</junit.version>
+        <gson.version>2.3.1</gson.version>
     </properties>
 
     <build>
@@ -19,8 +23,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.2</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
                 </configuration>
             </plugin>
 
@@ -40,14 +44,14 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.10</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.3.1</version>
+            <version>${gson.version}</version>
         </dependency>
     </dependencies>
 
