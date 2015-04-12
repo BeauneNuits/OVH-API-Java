@@ -38,7 +38,7 @@ public abstract class HttpRequests {
      * @throws Exception Exception Occuring during the request
      */
     public static int sendGet(String url, StringBuffer out, List<Header> headers) throws Exception {
-        return sendWithoutBody(url, "GET", out, null);
+        return sendWithoutBody(url, "GET", out, headers);
     }
 
     /**
