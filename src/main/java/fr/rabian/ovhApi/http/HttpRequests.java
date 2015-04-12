@@ -21,11 +21,25 @@ public abstract class HttpRequests {
      *
      * @param url URL
      * @param out StringBuffer to store response in
+     * @param headers HTTP headers
      * @return Response code
      * @throws Exception Exception Occuring during the request
      */
-    public static int sendGet(String url, StringBuffer out) throws Exception {
+    public static int sendGet(String url, StringBuffer out, List<Header> headers) throws Exception {
         return sendWithoutBody(url, "GET", out, null);
+    }
+
+    /**
+     * DELETE request.
+     *
+     * @param url URL
+     * @param out StringBuffer to store response in
+     * @param headers HTTP headers
+     * @return Response code
+     * @throws Exception Exception Occuring during the request
+     */
+    public static int sendDelete(String url, StringBuffer out, List<Header> headers) throws Exception {
+        return sendWithoutBody(url, "DELETE", out, null);
     }
 
     /**
@@ -38,7 +52,7 @@ public abstract class HttpRequests {
      * @return Response code
      * @throws Exception Occuring during the request
      */
-    public static int sendWithoutBody(String url, String method, StringBuffer out, List<Header> headers) throws Exception {
+    private static int sendWithoutBody(String url, String method, StringBuffer out, List<Header> headers) throws Exception {
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -65,15 +79,17 @@ public abstract class HttpRequests {
     }
 
     /**
-     * POST request.
+     * PUT request.
+     *
      * @param url URL
      * @param out StringBuffer to store response in
      * @param body Request body
+     * @param headers HTTP headers
      * @return Response code
      * @throws Exception Occuring during the request
      */
-    public static int sendPost(String url, StringBuffer out, String body) throws Exception {
-        return sendPost(url, out, body, null);
+    public static int sendPut(String url, StringBuffer out, String body, List<Header> headers) throws Exception {
+        return sendWithBody(url, "PUT", out, body, null);
     }
 
     /**
