@@ -90,6 +90,18 @@ public class AppManager {
     }
 
     /**
+     * Carries out a DELETE request.
+     *
+     * @param path Path to the function
+     * @param c Consumer concerned
+     * @return Response body
+     * @throws Exception Occuring during the request
+     */
+    public String sendDeleteReq(String path, Consumer c) throws Exception {
+        return sendReq(path, "DELETE", c, "");
+    }
+
+    /**
      * Carries out a POST request.
      *
      * @param path Path to the function
@@ -100,6 +112,19 @@ public class AppManager {
      */
     public String sendPostReq(String path, Consumer c, String body) throws Exception {
         return sendReq(path, "POST", c, body);
+    }
+
+    /**
+     * Carries out a PUT request.
+     *
+     * @param path Path to the function
+     * @param c Consumer concerned
+     * @param body Request body
+     * @return Response body
+     * @throws Exception Occuring during the request
+     */
+    public String sendPutReq(String path, Consumer c, String body) throws Exception {
+        return sendReq(path, "PUT", c, body);
     }
 
     /**
