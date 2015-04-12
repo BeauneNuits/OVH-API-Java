@@ -86,7 +86,7 @@ public class AppManager {
      * @throws Exception Occuring during the request
      */
     public String sendGetReq(String path, Consumer c) throws Exception {
-        return sendReq(path, "GET", c, null);
+        return sendReq(path, "GET", c, "");
     }
 
     /**
@@ -117,7 +117,7 @@ public class AppManager {
         path = ep.getURL() + path;
         long time = ts.getTime();
         StringBuilder forSig = new StringBuilder();
-        forSig.append(app.getPubKey());
+        forSig.append(app.getSecKey());
         forSig.append("+");
         forSig.append(c.getConsumerKey());
         forSig.append("+");
@@ -145,6 +145,12 @@ public class AppManager {
                 break;
             case "POST":
                 result = HttpRequests.sendPost(path, out, body, headers);
+                break;
+            case "PUT":
+                result = HttpRequests.sendPut(path, out, body, headers);
+                break;
+            case "DELETE":
+                result = HttpRequests.sendDelete(path, out, headers);
                 break;
             default:
                 throw new IllegalArgumentException("Incorrect HTTP method.");
