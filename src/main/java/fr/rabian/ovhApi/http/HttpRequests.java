@@ -51,7 +51,7 @@ public abstract class HttpRequests {
      * @throws Exception Exception Occuring during the request
      */
     public static int sendDelete(String url, StringBuffer out, List<Header> headers) throws Exception {
-        return sendWithoutBody(url, "DELETE", out, null);
+        return sendWithoutBody(url, "DELETE", out, headers);
     }
 
     /**
@@ -101,7 +101,7 @@ public abstract class HttpRequests {
      * @throws Exception Occuring during the request
      */
     public static int sendPut(String url, StringBuffer out, String body, List<Header> headers) throws Exception {
-        return sendWithBody(url, "PUT", out, body, null);
+        return sendWithBody(url, "PUT", out, body, headers);
     }
 
     /**
