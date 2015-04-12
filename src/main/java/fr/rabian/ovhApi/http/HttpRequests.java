@@ -25,19 +25,20 @@ public abstract class HttpRequests {
      * @throws Exception Exception Occuring during the request
      */
     public static int sendGet(String url, StringBuffer out) throws Exception {
-        return sendGet(url, out, null);
+        return sendWithoutBody(url, "GET", out, null);
     }
 
     /**
-     * GET request.
+     * Send a request without body (GET, DELETE...)
      *
      * @param url URL
+     * @param method HTTP method
      * @param out StringBuffer to store response in
      * @param headers HTTP headers
      * @return Response code
      * @throws Exception Occuring during the request
      */
-    public static int sendGet(String url, StringBuffer out, List<Header> headers) throws Exception {
+    public static int sendWithoutBody(String url, String method, StringBuffer out, List<Header> headers) throws Exception {
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -86,11 +87,26 @@ public abstract class HttpRequests {
      * @throws Exception Occuring during the request
      */
     public static int sendPost(String url, StringBuffer out, String body, List<Header> headers) throws Exception {
+        return sendWithBody(url, "POST", out, body, null);
+    }
+
+    /**
+     * Send a request with a body (POST, PUT...).
+     *
+     * @param url URL
+     * @param method HTTP method
+     * @param out StringBuffer to store response in
+     * @param body Request body
+     * @param headers HTTP headers
+     * @return Response code
+     * @throws Exception Occuring during the request
+     */
+    private static int sendWithBody(String url, String method, StringBuffer out, String body, List<Header> headers) throws Exception {
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-        con.setRequestMethod("POST");
+        con.setRequestMethod(method);
         if (headers != null) {
             for (Header header : headers) {
                 con.setRequestProperty(header.getKey(), header.getValue());
