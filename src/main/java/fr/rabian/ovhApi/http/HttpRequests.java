@@ -69,7 +69,7 @@ public abstract class HttpRequests {
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-        con.setRequestMethod("GET");
+        con.setRequestMethod(method);
         if (headers != null) {
             for (Header header : headers) {
                 con.setRequestProperty(header.getKey(), header.getValue());
