@@ -21,6 +21,18 @@ public abstract class HttpRequests {
      *
      * @param url URL
      * @param out StringBuffer to store response in
+     * @return Response code
+     * @throws Exception Exception Occuring during the request
+     */
+    public static int sendGet(String url, StringBuffer out) throws Exception {
+        return sendWithoutBody(url, "GET", out, null);
+    }
+
+    /**
+     * GET request.
+     *
+     * @param url URL
+     * @param out StringBuffer to store response in
      * @param headers HTTP headers
      * @return Response code
      * @throws Exception Exception Occuring during the request
@@ -103,7 +115,7 @@ public abstract class HttpRequests {
      * @throws Exception Occuring during the request
      */
     public static int sendPost(String url, StringBuffer out, String body, List<Header> headers) throws Exception {
-        return sendWithBody(url, "POST", out, body, null);
+        return sendWithBody(url, "POST", out, body, headers);
     }
 
     /**
