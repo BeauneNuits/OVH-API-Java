@@ -61,7 +61,7 @@ public class Timestamps {
      *
      * @throws Exception From fetching
      */
-    private void correctTime() throws Exception {
+    private void correctTime() {
         long time = getOVHTime();
         lastFetch = getSystemTime();
         delta = (int) (getSystemTime() - time);
@@ -73,7 +73,7 @@ public class Timestamps {
      * @return Timestamp
      * @throws Exception From fetching
      */
-    private long getOVHTime() throws Exception {
+    private long getOVHTime() {
         StringBuffer out = new StringBuffer();
         HttpRequests.sendGet(this.url, out);
         return Long.parseLong(out.toString());
@@ -85,7 +85,7 @@ public class Timestamps {
      * @return Timestamp
      * @throws Exception From fetching
      */
-    public long getTime() throws Exception {
+    public long getTime() {
         return getTime(AUTO);
     }
 
@@ -96,7 +96,7 @@ public class Timestamps {
      * @return Timestamp
      * @throws Exception From fetching
      */
-    public long getTime(int source) throws Exception {
+    public long getTime(int source) {
         long time;
 
         if (source == AUTO || source == SYSTEM) {
