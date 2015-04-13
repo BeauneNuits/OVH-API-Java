@@ -48,5 +48,5 @@ try {
 
 ## License
 
-This software is licensed under GNU GPL v3 license. Check the license file for details.
+This software is licensed under GNU GPL v3 license. Check the [license](https://github.com/BeauneNuits/OVH-API-Java/blob/master/License.txt) file for details.
 
