@@ -1,6 +1,7 @@
 package fr.rabian.ovhApi.core.utils;
 
 import static org.junit.Assert.*;
+import fr.rabian.ovhApi.core.utils.HashFunctions;
 
 public class HashFunctionsTest {
 
