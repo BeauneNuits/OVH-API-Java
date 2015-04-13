@@ -41,6 +41,7 @@ public class Application {
         this.pubKey = pubKey;
         this.secKey = secKey;
         this.ep = endpoint;
+        this.am = new AppManager(this);
     }
 
     /**
