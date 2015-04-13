@@ -7,10 +7,7 @@ package fr.rabian.ovhApi.beans;
  * @version 0.1
  */
 public class Application {
-    /**
-     * Application's name
-     */
-    private final String name;
+
     /**
      * Application key (AK)
      */
@@ -31,26 +28,15 @@ public class Application {
     /**
      * Creates an application.
      *
-     * @param name Application's name
      * @param pubKey Application key (AK)
      * @param secKey Application secret (AS)
      * @param endpoint Application's endpoint
      */
-    public Application(String name, String pubKey, String secKey, Endpoint endpoint) {
-        this.name = name;
+    public Application(String pubKey, String secKey, Endpoint endpoint) {
         this.pubKey = pubKey;
         this.secKey = secKey;
         this.ep = endpoint;
         this.am = new AppManager(this);
-    }
-
-    /**
-     * Returns the app's name.
-     *
-     * @return Application's name
-     */
-    public String getName() {
-        return name;
     }
 
     /**
