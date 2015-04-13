@@ -48,6 +48,11 @@ try {
 }
 ```
 
+For further documentation : 
+- Check the sources
+- Generate the javadoc locally using maven `mvn javadoc:javadoc`
+- Look at the javadoc [online](http://beaunenuits.github.io/OVH-API-Java/apidocs/index.html)
+
 ## License
 
 This software is licensed under GNU GPL v3 license. Check the [license](https://github.com/BeauneNuits/OVH-API-Java/blob/master/License.txt) file for details.
