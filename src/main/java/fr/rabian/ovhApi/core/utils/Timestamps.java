@@ -58,8 +58,6 @@ public class Timestamps {
 
     /**
      * Updates the diff between system time and OVH time.
-     *
-     * @throws Exception From fetching
      */
     private void correctTime() {
         long time = getOVHTime();
@@ -71,7 +69,6 @@ public class Timestamps {
      * Returns timestamp from OVH.
      *
      * @return Timestamp
-     * @throws Exception From fetching
      */
     private long getOVHTime() {
         StringBuffer out = new StringBuffer();
@@ -83,7 +80,6 @@ public class Timestamps {
      * Returns timestamp (source selected automatically).
      *
      * @return Timestamp
-     * @throws Exception From fetching
      */
     public long getTime() {
         return getTime(AUTO);
@@ -94,7 +90,6 @@ public class Timestamps {
      *
      * @param source Time source (OVH, SYSTEM, AUTO)
      * @return Timestamp
-     * @throws Exception From fetching
      */
     public long getTime(int source) {
         long time;
