@@ -1,4 +1,4 @@
-package fr.rabian.ovhApi.http;
+package fr.rabian.ovhApi.core.http;
 
 /**
  * Represents an HTTP header for use in HTTP requests.

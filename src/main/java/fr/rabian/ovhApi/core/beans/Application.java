@@ -1,4 +1,4 @@
-package fr.rabian.ovhApi.beans;
+package fr.rabian.ovhApi.core.beans;
 
 /**
  * Represents an OVH application.

@@ -1,12 +1,11 @@
-package fr.rabian.ovhApi.beans;
+package fr.rabian.ovhApi.core.beans;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import fr.rabian.ovhApi.beans.*;
-import fr.rabian.ovhApi.http.Header;
-import fr.rabian.ovhApi.http.HttpRequests;
-import fr.rabian.ovhApi.utils.HashFunctions;
-import fr.rabian.ovhApi.utils.Timestamps;
+import fr.rabian.ovhApi.core.http.Header;
+import fr.rabian.ovhApi.core.http.HttpRequests;
+import fr.rabian.ovhApi.core.utils.HashFunctions;
+import fr.rabian.ovhApi.core.utils.Timestamps;
 
 import java.util.ArrayList;
 import java.util.List;

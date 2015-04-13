@@ -1,4 +1,4 @@
-package fr.rabian.ovhApi.beans;
+package fr.rabian.ovhApi.core.beans;
 
 /**
  * This class represents an endpoint for the OVH API.

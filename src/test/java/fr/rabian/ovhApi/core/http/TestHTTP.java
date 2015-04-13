@@ -1,4 +1,4 @@
-package fr.rabian.ovhApi.http;
+package fr.rabian.ovhApi.core.http;
 
 /**
  * Created by adrien on 27/03/15.

@@ -1,7 +1,7 @@
-package fr.rabian.ovhApi.utils;
+package fr.rabian.ovhApi.core.utils;
 
-import fr.rabian.ovhApi.beans.Endpoint;
-import fr.rabian.ovhApi.http.HttpRequests;
+import fr.rabian.ovhApi.core.beans.Endpoint;
+import fr.rabian.ovhApi.core.http.HttpRequests;
 
 /**
  * This class handles timestamps, from local and OVH sources.

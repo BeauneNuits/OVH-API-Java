@@ -1,4 +1,4 @@
-package fr.rabian.ovhApi.http;
+package fr.rabian.ovhApi.core.http;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
