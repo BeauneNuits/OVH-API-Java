@@ -75,7 +75,7 @@ public class Application {
      *
      * @return Endpoint in which the application is declared
      */
-    public Endpoint getEp() {
+    public Endpoint getEndpoint() {
         return ep;
     }
 
@@ -84,7 +84,7 @@ public class Application {
      *
      * @return Manager for this application
      */
-    public AppManager getAm() {
+    public AppManager getAppManager() {
         return am;
     }
 }
