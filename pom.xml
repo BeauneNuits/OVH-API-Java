@@ -32,7 +32,7 @@
 
     <scm>
         <connection>scm:git:git@github.com:BeauneNuits/OVH-API-Java.git</connection>
-        <developerConnection>scm:git:git@github.com:BeauneNuits/OVH-API-Java.git</developerConnection>
+        <developerConnection>scm:git:git@git.rabian.fr:adrien/OVH-API.git</developerConnection>
         <url>https://github.com/BeauneNuits/OVH-API-Java</url>
     </scm>
 
@@ -63,6 +63,27 @@
                     <show>private</show>
                     <nohelp>true</nohelp>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
