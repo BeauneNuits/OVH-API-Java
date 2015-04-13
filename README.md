@@ -16,6 +16,8 @@ to compile and package the sources into a JAR file (usual output directory is 't
 mvn install
 ```
 
+If you do not can / want using Maven, check the binary Jar furnished in each [release](https://github.com/BeauneNuits/OVH-API-Java/releases).
+
 ## Sample usage
 
 Include the Jar file as a dependency, then import the classes :
