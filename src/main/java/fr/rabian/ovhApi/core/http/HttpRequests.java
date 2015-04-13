@@ -76,14 +76,16 @@ public abstract class HttpRequests {
 
             responseCode = con.getResponseCode();
 
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(con.getInputStream()));
-            String inputLine;
+            if (responseCode == 200) {
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(con.getInputStream()));
+                String inputLine;
 
-            while ((inputLine = in.readLine()) != null) {
-                out.append(inputLine);
+                while ((inputLine = in.readLine()) != null) {
+                    out.append(inputLine);
+                }
+                in.close();
             }
-            in.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -147,14 +149,16 @@ public abstract class HttpRequests {
 
             responseCode = con.getResponseCode();
 
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(con.getInputStream()));
-            String inputLine;
+            if (responseCode == 200) {
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(con.getInputStream()));
+                String inputLine;
 
-            while ((inputLine = in.readLine()) != null) {
-                out.append(inputLine);
+                while ((inputLine = in.readLine()) != null) {
+                    out.append(inputLine);
+                }
+                in.close();
             }
-            in.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
