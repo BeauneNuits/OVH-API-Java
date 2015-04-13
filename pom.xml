@@ -9,6 +9,33 @@
     <version>0.1</version>
     <packaging>jar</packaging>
 
+    <name>fr.rabian.ovhApi:OVH-API-core</name>
+    <description>This is a small wrapper for the OVH API in Java.
+        It aims to provide tools to handle the most off-putting part of using this API.</description>
+    <url>https://github.com/BeauneNuits/OVH-API-Java</url>
+
+    <licenses>
+        <license>
+            <name>GNU General Public License v3</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Adrien Rabian</name>
+            <email>adrien@rabian.fr</email>
+            <organization>Individual</organization>
+            <organizationUrl>https://github.com/BeauneNuits</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:BeauneNuits/OVH-API-Java.git</connection>
+        <developerConnection>scm:git:git@github.com:BeauneNuits/OVH-API-Java.git</developerConnection>
+        <url>https://github.com/BeauneNuits/OVH-API-Java</url>
+    </scm>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>1.8</jdk.version>
