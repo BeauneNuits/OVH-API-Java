@@ -19,6 +19,14 @@ public class Application {
      * Application secret (AS)
      */
     private final String secKey;
+    /**
+     * Endpoint in which the application is declared
+     */
+    private final Endpoint ep;
+    /**
+     * Manager for this application
+     */
+    private final AppManager am;
 
     /**
      * Creates an application.
@@ -26,11 +34,13 @@ public class Application {
      * @param name Application's name
      * @param pubKey Application key (AK)
      * @param secKey Application secret (AS)
+     * @param endpoint Application's endpoint
      */
-    public Application(String name, String pubKey, String secKey) {
+    public Application(String name, String pubKey, String secKey, Endpoint endpoint) {
         this.name = name;
         this.pubKey = pubKey;
         this.secKey = secKey;
+        this.ep = endpoint;
     }
 
     /**
@@ -58,5 +68,23 @@ public class Application {
      */
     public String getSecKey() {
         return secKey;
+    }
+
+    /**
+     * Returns the app's endpoint.
+     *
+     * @return Endpoint in which the application is declared
+     */
+    public Endpoint getEp() {
+        return ep;
+    }
+
+    /**
+     * Returns the app's AppManager.
+     *
+     * @return Manager for this application
+     */
+    public AppManager getAm() {
+        return am;
     }
 }
