@@ -5,8 +5,10 @@ import com.google.gson.GsonBuilder;
 import fr.rabian.ovhApi.core.http.Header;
 import fr.rabian.ovhApi.core.http.HttpRequests;
 import fr.rabian.ovhApi.core.utils.HashFunctions;
+import fr.rabian.ovhApi.core.utils.NOKResponseException;
 import fr.rabian.ovhApi.core.utils.Timestamps;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,8 +52,9 @@ public class AppManager {
      * @param scope Authorization scope
      * @param redirectURL URL to redirect to after authentication
      * @return Feteched Consumer
+     * @throws NOKResponseException If the response differs from 200 - OK
      */
-    public Consumer getConsumer(List<ScopeElement> scope, String redirectURL) {
+    public Consumer getConsumer(List<ScopeElement> scope, String redirectURL) throws NOKResponseException {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         List<Header> headers = new ArrayList<>();
@@ -61,16 +64,13 @@ public class AppManager {
 
         RequestCredentials rc = new RequestCredentials(scope, redirectURL);
         String req = gson.toJson(rc);
-        int result = 0;
-        try {
-            result = HttpRequests.sendPost(ep.getURL() + "/auth/credential", out, req, headers);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Consumer c = null;
+        int result = HttpRequests.sendPost(ep.getURL() + "/auth/credential", out, req, headers);
+        Consumer c;
         if (result == 200) {
             c = gson.fromJson(out.toString(), Consumer.class);
             c.setScope(scope);
+        } else {
+            throw new NOKResponseException(result);
         }
         return c;
     }
@@ -81,9 +81,9 @@ public class AppManager {
      * @param path Path to the function
      * @param c Consumer concerned
      * @return Response body
-     * @throws Exception Occuring during the request
+     * @throws NOKResponseException If the response differs from 200 - OK
      */
-    public String sendGetReq(String path, Consumer c) throws Exception {
+    public String sendGetReq(String path, Consumer c) throws NOKResponseException {
         return sendReq(path, "GET", c, "");
     }
 
@@ -93,9 +93,9 @@ public class AppManager {
      * @param path Path to the function
      * @param c Consumer concerned
      * @return Response body
-     * @throws Exception Occuring during the request
+     * @throws NOKResponseException If the response differs from 200 - OK
      */
-    public String sendDeleteReq(String path, Consumer c) throws Exception {
+    public String sendDeleteReq(String path, Consumer c) throws NOKResponseException {
         return sendReq(path, "DELETE", c, "");
     }
 
@@ -106,9 +106,9 @@ public class AppManager {
      * @param c Consumer concerned
      * @param body Request body
      * @return Response body
-     * @throws Exception Occuring during the request
+     * @throws NOKResponseException If the response differs from 200 - OK
      */
-    public String sendPostReq(String path, Consumer c, String body) throws Exception {
+    public String sendPostReq(String path, Consumer c, String body) throws NOKResponseException {
         return sendReq(path, "POST", c, body);
     }
 
@@ -119,9 +119,9 @@ public class AppManager {
      * @param c Consumer concerned
      * @param body Request body
      * @return Response body
-     * @throws Exception Occuring during the request
+     * @throws NOKResponseException If the response differs from 200 - OK
      */
-    public String sendPutReq(String path, Consumer c, String body) throws Exception {
+    public String sendPutReq(String path, Consumer c, String body) throws NOKResponseException {
         return sendReq(path, "PUT", c, body);
     }
 
@@ -133,9 +133,9 @@ public class AppManager {
      * @param c Consumer concerned
      * @param body Request body
      * @return Response body
-     * @throws Exception Occuring during the request
+     * @throws NOKResponseException If the response differs from 200 - OK
      */
-    private String sendReq(String path, String method, Consumer c, String body) throws Exception{
+    private String sendReq(String path, String method, Consumer c, String body) throws NOKResponseException{
         List<Header> headers = new ArrayList<>();
         path = ep.getURL() + path;
         long time = ts.getTime();
@@ -151,7 +151,13 @@ public class AppManager {
         forSig.append(body);
         forSig.append("+");
         forSig.append(Long.toString(time));
-        String sig = "$1$" + HashFunctions.hashMD("SHA-1", forSig.toString());
+
+        String sig = "$1$";
+        try {
+            sig = sig + HashFunctions.hashMD("SHA-1", forSig.toString());
+        } catch (NoSuchAlgorithmException e) {
+            //Silenced because always available.
+        }
 
         headers.add(new Header("X-Ovh-Application", app.getPubKey()));
         headers.add(new Header("X-Ovh-Consumer", c.getConsumerKey()));
@@ -159,7 +165,7 @@ public class AppManager {
         headers.add(new Header("X-Ovh-Timestamp", Long.toString(time)));
         headers.add(new Header("X-Ovh-Signature", sig));
 
-        int result = 0;
+        int result;
         StringBuffer out = new StringBuffer();
 
         switch(method) {
@@ -179,6 +185,10 @@ public class AppManager {
                 throw new IllegalArgumentException("Incorrect HTTP method.");
         }
 
-        return out.toString();
+        if (result == 200) {
+            return out.toString();
+        } else {
+            throw new NOKResponseException(result);
+        }
     }
 }
