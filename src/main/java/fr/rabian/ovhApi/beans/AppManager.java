@@ -1,4 +1,4 @@
-package fr.rabian.ovhApi;
+package fr.rabian.ovhApi.beans;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
