@@ -38,11 +38,10 @@ public class AppManager {
      * Creates an instance of AppManager
      *
      * @param app Application to manage
-     * @param ep Endpoint to use
      */
-    public AppManager(Application app, Endpoint ep) {
+    protected AppManager(Application app) {
         this.app = app;
-        this.ep = ep;
+        this.ep = app.getEndpoint();
         ts = new Timestamps(ep);
     }
 
