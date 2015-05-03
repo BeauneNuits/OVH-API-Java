@@ -162,6 +162,7 @@ public class AppManager {
         headers.add(new Header("X-Ovh-Application", app.getPubKey()));
         headers.add(new Header("X-Ovh-Consumer", c.getConsumerKey()));
         headers.add(new Header("Accept", "application/json"));
+        headers.add(new Header("Content-Type", "application/json;charset=utf-8"));
         headers.add(new Header("X-Ovh-Timestamp", Long.toString(time)));
         headers.add(new Header("X-Ovh-Signature", sig));
 
