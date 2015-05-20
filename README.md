@@ -16,7 +16,26 @@ to compile and package the sources into a JAR file (usual output directory is 't
 mvn install
 ```
 
-If you do not can / want using Maven, check the binary Jar furnished in each [release](https://github.com/BeauneNuits/OVH-API-Java/releases).
+You can also fetch artifcats from a custom repository :
+
+```
+<repositories>
+    <repository>
+        <id>nexus-rabian-public-snapshots</id>
+        <url>http://unsec.maven.rabian.fr/content/repositories/snapshots</url>
+    </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+        <groupId>fr.rabian.ovhApi</groupId>
+        <artifactId>OVH-API-core</artifactId>
+        <version>0.1.1</version>
+    </dependency>
+</dependencies>
+```
+
+If you cannot / wont use Maven, check the binary Jar furnished in each [release](https://github.com/BeauneNuits/OVH-API-Java/releases).
 
 ## Sample usage
 
