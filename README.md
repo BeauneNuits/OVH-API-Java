@@ -35,7 +35,7 @@ You can also fetch artifcats from a custom repository :
 </dependencies>
 ```
 
-If you cannot / wont use Maven, check the binary Jar furnished in each [release](https://github.com/BeauneNuits/OVH-API-Java/releases).
+If you can not / do not want to use Maven, check the latest binaries in [Nexus](http://unsec.maven.rabian.fr/#nexus-search;gav~fr.rabian.ovhApi~OVH-API-core~~~).
 
 ## Sample usage
 
