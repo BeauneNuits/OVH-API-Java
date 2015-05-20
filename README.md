@@ -21,8 +21,8 @@ You can also fetch artifcats from a custom repository :
 ```
 <repositories>
     <repository>
-        <id>nexus-rabian-public-snapshots</id>
-        <url>http://unsec.maven.rabian.fr/content/repositories/snapshots</url>
+        <id>nexus-rabian-public-releases</id>
+        <url>http://unsec.maven.rabian.fr/content/repositories/releases</url>
     </repository>
 </repositories>
 
