@@ -70,7 +70,7 @@ try {
 For further documentation : 
 - Check the sources
 - Generate the javadoc locally using maven `mvn javadoc:javadoc`
-- Look at the javadoc [online](http://beaunenuits.github.io/OVH-API-Java/apidocs/index.html)
+- Look at the javadoc [online](http://unsec.maven.rabian.fr/content/sites/ovh-api-site/apidocs/index.html)
 
 ## License
 
