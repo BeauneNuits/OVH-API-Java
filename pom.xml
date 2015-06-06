@@ -9,7 +9,7 @@
     <version>0.1.1</version>
     <packaging>jar</packaging>
 
-    <name>fr.rabian.ovhApi:OVH-API-core</name>
+    <name>OVH API Java wrapper</name>
     <description>This is a small wrapper for the OVH API in Java.
         It aims to provide tools to handle the most off-putting part of using this API.</description>
     <url>https://github.com/BeauneNuits/OVH-API-Java</url>
