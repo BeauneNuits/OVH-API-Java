@@ -58,7 +58,7 @@ scope.add(g);
                      
 try {
     c = am.getConsumer(scope, "");
-    System.out.println(nc.getConsumerKey());
+    System.out.println(c.getConsumerKey());
     Scanner in = new Scanner(System.in);
     String wait = in.nextLine();
     System.out.println(am.sendGetReq("/me", c));
