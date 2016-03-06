@@ -39,13 +39,18 @@ If you can not / do not want to use Maven, check the latest binaries in [Nexus](
 
 ## Sample usage
 
-Include the Jar file as a dependency, then import the classes :
+First of all, you must register an application on the OVH side. If you are unfamiliar with the concepts 
+specific to the OVH API authentication, you may want to catch up [here](https://api.ovh.com/g934.first_step_with_api).  
+You can create a [regular app](https://eu.api.ovh.com/createApp/), which allows you to authenticate against multiple users, or 
+a [script](https://eu.api.ovh.com/createToken/), in which case you register a single user once.
+
+Then, it is time to use the wrapper : include the Jar file as a dependency, then import the classes :
 
 ```java
 import fr.rabian.ovhApi.core.beans.*;
 ```
 
-You can then create an application and its manager, and get your first consumer :
+You can then create the application you registered earlier, get its manager, and get your first consumer (if needed) :
 
 ```java
 Application a = new Application(AK, AS, Endpoint.ovh_eu);
@@ -58,7 +63,7 @@ scope.add(g);
                      
 try {
     c = am.getConsumer(scope, "");
-    System.out.println(c.getConsumerKey());
+    System.out.println(c.getValidationUrl());
     Scanner in = new Scanner(System.in);
     String wait = in.nextLine();
     System.out.println(am.sendGetReq("/me", c));
